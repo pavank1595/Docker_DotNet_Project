@@ -9,17 +9,16 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    // The default HSTS value is 30 days. You may want to change this for production scenarios.
+    // app.UseHsts(); // Uncomment this in production for better security.
 }
 
-app.UseHttpsRedirection();
+// We remove HTTPS redirection for now to avoid issues in containers, but you can keep it in production if needed
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.Run();
+// Ensure the application binds to all network interfaces (0.0.0.0) and listens on port 80
+app.Run("http://0.0.0.0:80");
