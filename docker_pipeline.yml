@@ -13,7 +13,7 @@ steps:
   inputs:
     command: 'build'
     Dockerfile: '**/Dockerfile'  # Path to your Dockerfile (adjust if needed)
-    tags: '$(Build.BuildId)'  # Tag the image with the build ID (or use 'latest' if preferred)
+    tags: 'sampleapp:v1.0'  # Tag the image with the build ID (or use 'latest' if preferred)
 
 # Optionally, you can add more steps to test the image locally or inspect it (optional)
 # Example: Verify the image is built (this will run `docker images` as a sanity check)
